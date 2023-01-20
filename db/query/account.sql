@@ -9,7 +9,7 @@ INSERT INTO accounts (
 
 -- name: GetAccount :one
 SELECT * FROM accounts
-where id = $1 LIMIT 1;
+where id = $1;
 
 -- name: ListAccounts :many
 SELECT * FROM accounts
