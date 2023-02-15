@@ -25,6 +25,8 @@ type CreateAccountParams struct {
 	Currency string `json:"currency"`
 }
 
+// this is a method of the Queries object
+// requires a Queries object and db connection to talk to the db
 func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (Account, error) {
 	row := q.db.QueryRowContext(ctx, createAccount, arg.Owner, arg.Balance, arg.Currency)
 	var i Account

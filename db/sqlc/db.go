@@ -16,7 +16,7 @@ type DBTX interface {
 	QueryRowContext(context.Context, string, ...interface{}) *sql.Row
 }
 
-func New(db DBTX) *Queries {
+func NewQueries(db DBTX) *Queries {
 	return &Queries{db: db}
 }
 
