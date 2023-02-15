@@ -1,6 +1,7 @@
 package db
 
 import (
+	"github.com/Vfulgham/simple-bank/db/util"
 	"context"
 	"testing"
 
@@ -13,9 +14,9 @@ func TestCreateAccount(t *testing.T){
 
 	// expected
 	arg := CreateAccountParams{
-		Owner: "tom",
-		Balance: 100,
-		Currency: "USD",
+		Owner: util.RandomOwner(),
+		Balance: util.RandomMoney(),
+		Currency: util.RandomCurrency(),
 	}
 
 	// this is testQueries object created in main_test.go
