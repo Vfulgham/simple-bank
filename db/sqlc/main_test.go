@@ -13,17 +13,19 @@ import (
 // global variable so it can be used in all unit tests
 // use this to connect to db (it has DBTX object)
 var testQueries *Queries
+var testDB *sql.DB
 
-func TestMain(m *testing.M){
+func TestMain(m *testing.M) {
+	var err error
 
 	// get connection to db
-	conn, err := sql.Open(getEnvVar("DBDRIVER"), getEnvVar("DBSOURCE"))
+	testDB, err = sql.Open(getEnvVar("DBDRIVER"), getEnvVar("DBSOURCE"))
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
 
 	// create Queries object
-	testQueries = NewQueries(conn)
+	testQueries = NewQueries(testDB)
 
 	// m.Run runs tests
 	// tells test runner via Exit command if test failed or passed
