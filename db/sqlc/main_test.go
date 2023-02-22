@@ -25,7 +25,7 @@ func TestMain(m *testing.M) {
 	}
 
 	// create Queries object
-	testQueries = NewQueries(testDB)
+	testQueries = New(testDB)
 
 	// m.Run runs tests
 	// tells test runner via Exit command if test failed or passed
