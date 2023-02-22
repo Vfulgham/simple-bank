@@ -11,6 +11,11 @@ INSERT INTO accounts (
 SELECT * FROM accounts
 where id = $1;
 
+-- name: GetAccountForUpdate :one
+SELECT * FROM accounts
+where id = $1 
+FOR NO KEY UPDATE;
+
 -- name: ListAccounts :many
 SELECT * FROM accounts
 ORDER BY id
