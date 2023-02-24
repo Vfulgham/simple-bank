@@ -99,13 +99,13 @@ func TestTransferTx(t *testing.T) {
 
 		fmt.Println(">>tx:", fromAccount.Balance, toAccount.Balance)
 		diff1 := account1.Balance - fromAccount.Balance // money that goes out of account1
-		diff2 := toAccount.Balance - account2.Balance // money that goes in to account2
+		diff2 := toAccount.Balance - account2.Balance   // money that goes in to account2
 		require.Equal(t, diff1, diff2)
 		require.True(t, diff1 > 0)
 	}
 
 	// check final updated balances
-	// using GetAccountForUpdate() for db transaction lock 
+	// using GetAccountForUpdate() for db transaction lock
 	updatedAccount1, err := testQueries.GetAccount(context.Background(), account1.ID)
 	require.NoError(t, err)
 
